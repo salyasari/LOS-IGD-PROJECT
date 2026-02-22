@@ -118,7 +118,7 @@ Data Mentah IGD
 
 **Temuan kunci:** `kd_customer` (jenis asuransi) memiliki daya prediktif kuat secara individual, namun tidak cukup untuk membangun model yang stabil. Model tidak sepenuhnya bergantung pada variabel administratif ini — fitur klinis dan operasional tetap berkontribusi signifikan.
 
-## 🔑 Kebaruan Penelitian
+## Kebaruan Penelitian
 
 Dibandingkan dengan studi prediksi ED LOS yang sudah ada, penelitian ini berkontribusi pada tiga aspek:
 
@@ -132,7 +132,7 @@ Studi ablasi sistematis terhadap variabel asuransi (BPJS vs Umum) melalui tiga s
 Penelitian ini menggunakan data nyata dari rumah sakit pemerintah Indonesia dengan sistem asuransi nasional BPJS — konteks yang sangat kurang terwakili dalam literatur prediksi ED LOS yang didominasi data dari negara maju.
 
 
-## 📚 Referensi Utama
+## Referensi Utama
 
 - Wang et al. (2025). LightGBM-based prediction of prolonged ED LOS. *PMC12093424*
 - Sulaiman et al. (2025). Explainable ED LOS prediction with rule extraction. *Frontiers in Digital Health. PMC11861435*
@@ -141,12 +141,12 @@ Penelitian ini menggunakan data nyata dari rumah sakit pemerintah Indonesia deng
 - Gill et al. (2023). LightGBM for acute clinical deterioration with incremental feature sets. *Scientific Reports. PMC10442440*
 
 
-## 👤 Penulis
+## Penulis
 
 **Noriandini Salyasari**
 RSUD dr. Soedono Madiun — Pranata Komputer Ahli Pertama
 
-## 📋 Lisensi & Etika
+## Lisensi & Etika
 
 Penelitian ini menggunakan data rekam medis nyata yang telah mendapatkan **izin institusional** dari RSUD dr. Soedono Madiun. Semua identitas pasien telah di-pseudonymisasi sebelum analisis. Dataset tidak didistribusikan secara publik sesuai regulasi privasi data kesehatan yang berlaku.
 

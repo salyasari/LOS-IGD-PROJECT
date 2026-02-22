@@ -1,4 +1,4 @@
-# 🏥 Prediksi Prolonged Length of Stay (LOS) di IGD
+# Prediksi Prolonged Length of Stay (LOS) di IGD
 ### *Clinician-Guided Feature Engineering & Explainable Machine Learning untuk Sistem IGD Rumah Sakit Indonesia*
 
 ---
@@ -11,24 +11,20 @@
 
 ---
 
-## 📌 Tentang Penelitian
+## Tentang Penelitian
 
-Penelitian ini mengembangkan model prediksi **Prolonged Length of Stay (LOS)** pasien di **Instalasi Gawat Darurat (IGD) RSUD dr. Soedono Madiun** menggunakan data tahun 2025. Model dirancang untuk mendukung pengambilan keputusan klinis sejak dini — membantu tenaga medis mengidentifikasi pasien berisiko tinggi perpanjangan rawat sebelum kondisi memburuk atau sumber daya terlambat dialokasikan.
+Penelitian ini mengembangkan model prediksi **Prolonged Length of Stay (LOS)** pasien di **Instalasi Gawat Darurat (IGD) RSUD dr. Soedono Madiun** menggunakan data tahun 2025. Model dirancang untuk mendukung pengambilan keputusan klinis sejak dini, membantu tenaga medis mengidentifikasi pasien berisiko tinggi perpanjangan rawat sebelum kondisi memburuk atau sumber daya terlambat dialokasikan.
+Berbeda dari studi sejenis yang hanya menggunakan fitur rekam medis mentah, penelitian ini memperkenalkan **clinician-guided feature engineering** yaitu rekayasa fitur interaksi yang dirancang berdasarkan hipotesis klinis domain IGD. Selain itu dalam penelitian ini juga dilakukan **studi ablasi variabel administratif** (jenis asuransi/kd_customer) untuk mengevaluasi kontribusi dan potensi bias sistematis dalam model.
 
-Berbeda dari studi sejenis yang hanya menggunakan fitur rekam medis mentah, penelitian ini memperkenalkan **clinician-guided feature engineering** — rekayasa fitur interaksi yang dirancang berdasarkan hipotesis klinis domain IGD. Selain itu, dilakukan **studi ablasi variabel administratif** (jenis asuransi/kd_customer) untuk mengevaluasi kontribusi dan potensi bias sistematis dalam model.
-
----
-
-## 🎯 Tujuan Penelitian
+## Tujuan Penelitian
 
 - Membangun model prediksi biner prolonged LOS di IGD menggunakan data rekam medis nyata
-- Membandingkan performa **Model A** (fitur struktural) vs **Model B** (+ clinician-guided interaction features)
-- Mengevaluasi kontribusi variabel administratif asuransi melalui studi ablasi sistematis
-- Menghasilkan model yang **dapat dijelaskan** (*explainable*) menggunakan SHAP untuk mendukung kepercayaan klinisi
+- Menguji apakah rekayasa fitur interaksi yang dirancang berdasarkan hipotesis klinis yang secara eksplisit memodelkan hubungan antara kondisi klinis, beban operasional, dan profil pasien dapat meningkatkan performa prediksi dan utilitas klinis model dibandingkan dengan model baseline yang hanya menggunakan fitur struktural.
+- Mengevaluasi apakah kondisi klinis tertentu (kardiak, infeksi, trauma, respirasi) menghasilkan pola LOS yang berbeda secara signifikan ketika berinteraksi dengan tingkat kepadatan IGD
+- Melakukan studi ablasi sistematis terhadap variabel asuransi (kd_customer: BPJS vs Umum) melalui tiga skenario model, Full Model, No Insurance, dan Insurance Only untuk mengukur kontribusi prediktif sekaligus mendeteksi potensi bias administratif yang dapat mempengaruhi keadilan model (algorithmic fairness)
+- Menilai apakah performa model tetap stabil ketika divalidasi menggunakan temporal split (train: data awal–tengah 2025, test: data akhir 2025), sebagai pendekatan yang lebih mencerminkan skenario deployment nyata di mana model dilatih dengan data historis dan digunakan untuk memprediksi pasien baru
 
----
-
-## 📊 Dataset
+## Dataset
 
 | Atribut | Detail |
 |---|---|
@@ -42,9 +38,7 @@ Berbeda dari studi sejenis yang hanya menggunakan fitur rekam medis mentah, pene
 
 > ⚠️ **Catatan Privasi:** Dataset tidak dipublikasikan karena mengandung data rekam medis yang dilindungi. Identitas pasien telah di-pseudonymisasi menggunakan SHA-256 sebelum pemrosesan.
 
----
-
-## 🔬 Metodologi
+## Metodologi
 
 ### Alur Kerja
 
@@ -101,9 +95,7 @@ Data Mentah IGD
    └── Insurance Only (kd_customer saja)
 ```
 
----
-
-## 📈 Hasil Utama
+## Hasil Utama
 
 ### Perbandingan Model
 
@@ -126,57 +118,6 @@ Data Mentah IGD
 
 **Temuan kunci:** `kd_customer` (jenis asuransi) memiliki daya prediktif kuat secara individual, namun tidak cukup untuk membangun model yang stabil. Model tidak sepenuhnya bergantung pada variabel administratif ini — fitur klinis dan operasional tetap berkontribusi signifikan.
 
----
-
-## 🗂️ Struktur Repository
-
-```
-📦 predict-igd-los/
-├── 📓 predict_igd_conf.ipynb        # Notebook utama (EDA → Modeling → Ablation)
-├── 📄 README.md                     # Dokumentasi ini
-└── 📁 docs/
-    └── comparison_table.docx        # Tabel perbandingan dengan studi terkait
-```
-
----
-
-## ⚙️ Requirements
-
-```bash
-pip install pandas numpy matplotlib seaborn scikit-learn lightgbm imbalanced-learn optuna shap
-```
-
-| Library | Versi | Kegunaan |
-|---|---|---|
-| `pandas` | ≥2.0 | Manipulasi data |
-| `numpy` | ≥1.24 | Komputasi numerik |
-| `scikit-learn` | ≥1.3 | Preprocessing, evaluasi model |
-| `lightgbm` | 4.6.0 | Model gradient boosting utama |
-| `imbalanced-learn` | ≥0.11 | SMOTE untuk imbalanced data |
-| `optuna` | ≥3.0 | Hyperparameter tuning |
-| `shap` | ≥0.44 | Explainability / interpretasi model |
-| `matplotlib` / `seaborn` | ≥3.7 | Visualisasi |
-
----
-
-## 🚀 Cara Menjalankan
-
-```bash
-# Clone repository
-git clone https://github.com/username/predict-igd-los.git
-cd predict-igd-los
-
-# Install dependencies
-pip install -r requirements.txt
-
-# Jalankan notebook
-jupyter notebook predict_igd_conf.ipynb
-```
-
-> 💡 Notebook dirancang untuk dijalankan secara berurutan dari atas ke bawah. Setiap section memiliki output yang tersimpan untuk referensi tanpa perlu dataset asli.
-
----
-
 ## 🔑 Kebaruan Penelitian
 
 Dibandingkan dengan studi prediksi ED LOS yang sudah ada, penelitian ini berkontribusi pada tiga aspek:
@@ -190,7 +131,6 @@ Studi ablasi sistematis terhadap variabel asuransi (BPJS vs Umum) melalui tiga s
 **3. Konteks LMIC / Indonesia**
 Penelitian ini menggunakan data nyata dari rumah sakit pemerintah Indonesia dengan sistem asuransi nasional BPJS — konteks yang sangat kurang terwakili dalam literatur prediksi ED LOS yang didominasi data dari negara maju.
 
----
 
 ## 📚 Referensi Utama
 
@@ -200,19 +140,14 @@ Penelitian ini menggunakan data nyata dari rumah sakit pemerintah Indonesia deng
 - Wong et al. (2025). Prolonged LOS prediction in Emergency Medicine Ward. *Hong Kong Journal of Emergency Medicine*
 - Gill et al. (2023). LightGBM for acute clinical deterioration with incremental feature sets. *Scientific Reports. PMC10442440*
 
----
 
 ## 👤 Penulis
 
 **Noriandini Salyasari**
-RSUD dr. Soedono Madiun — Penelitian Informatika Kesehatan
-
----
+RSUD dr. Soedono Madiun — Pranata Komputer Ahli Pertama
 
 ## 📋 Lisensi & Etika
 
 Penelitian ini menggunakan data rekam medis nyata yang telah mendapatkan **izin institusional** dari RSUD dr. Soedono Madiun. Semua identitas pasien telah di-pseudonymisasi sebelum analisis. Dataset tidak didistribusikan secara publik sesuai regulasi privasi data kesehatan yang berlaku.
-
----
 
 *README ini dibuat sebagai bagian dari dokumentasi penelitian menuju publikasi ilmiah.*

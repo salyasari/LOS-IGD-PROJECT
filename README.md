@@ -19,10 +19,19 @@ Berbeda dari studi sejenis yang hanya menggunakan fitur rekam medis mentah, pene
 ## Tujuan Penelitian
 
 - Membangun model prediksi biner prolonged LOS di IGD menggunakan data rekam medis nyata
+## Primary Aim
 - Menguji apakah rekayasa fitur interaksi yang dirancang berdasarkan hipotesis klinis yang secara eksplisit memodelkan hubungan antara kondisi klinis, beban operasional, dan profil pasien dapat meningkatkan performa prediksi dan utilitas klinis model dibandingkan dengan model baseline yang hanya menggunakan fitur struktural.
+
+## Secondary Aims
+## SA-1 · Interaksi Kongesti Operasional × Risiko Klinis
 - Mengevaluasi apakah kondisi klinis tertentu (kardiak, infeksi, trauma, respirasi) menghasilkan pola LOS yang berbeda secara signifikan ketika berinteraksi dengan tingkat kepadatan IGD
+
+## SA-2 · Audit Variabel Administratif
 - Melakukan studi ablasi sistematis terhadap variabel asuransi (kd_customer: BPJS vs Umum) melalui tiga skenario model, Full Model, No Insurance, dan Insurance Only untuk mengukur kontribusi prediktif sekaligus mendeteksi potensi bias administratif yang dapat mempengaruhi keadilan model (algorithmic fairness)
+
+## SA-3 · Robustness Temporal Model
 - Menilai apakah performa model tetap stabil ketika divalidasi menggunakan temporal split (train: data awal–tengah 2025, test: data akhir 2025), sebagai pendekatan yang lebih mencerminkan skenario deployment nyata di mana model dilatih dengan data historis dan digunakan untuk memprediksi pasien baru
+- Menganalisis pengaruh kualitas dan kelengkapan data (veracity) terhadap performa dan reliabilitas model, dengan melakukan perbandingan beberapa strategi penanganan missing value dan pengukuran data veracity index untuk menilai robustnes model pada data klinis dunia nyata.
 
 ## Dataset
 

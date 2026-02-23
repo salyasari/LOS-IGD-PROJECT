@@ -31,7 +31,7 @@ Berbeda dari studi sejenis yang hanya menggunakan fitur rekam medis mentah, pene
 
 ## SA-3 · Robustness Temporal Model
 - Menilai apakah performa model tetap stabil ketika divalidasi menggunakan temporal split (train: data awal–tengah 2025, test: data akhir 2025), sebagai pendekatan yang lebih mencerminkan skenario deployment nyata di mana model dilatih dengan data historis dan digunakan untuk memprediksi pasien baru
-- Menganalisis pengaruh kualitas dan kelengkapan data (veracity) terhadap performa dan reliabilitas model, dengan melakukan perbandingan beberapa strategi penanganan missing value dan pengukuran data veracity index untuk menilai robustnes model pada data klinis dunia nyata.
+
 
 ## Dataset
 

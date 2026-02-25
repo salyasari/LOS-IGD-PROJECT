@@ -20,17 +20,17 @@ Berbeda dari studi sejenis yang hanya menggunakan fitur rekam medis mentah, pene
 
 - Membangun model prediksi biner prolonged LOS di IGD menggunakan data rekam medis nyata
 ## Primary Aim
-- Menguji apakah rekayasa fitur interaksi yang dirancang berdasarkan hipotesis klinis yang secara eksplisit memodelkan hubungan antara kondisi klinis, beban operasional, dan profil pasien dapat meningkatkan performa prediksi dan utilitas klinis model dibandingkan dengan model baseline yang hanya menggunakan fitur struktural.
+- Menguji apakah penambahan fitur interaksi yang dirancang berdasarkan pertimbangan klinis dokter dapat meningkatkan akurasi dan kegunaan model dalam memprediksi lama rawat ≥ 6 jam dibandingkan model dasar yang hanya menggunakan fitur struktural.
 
 ## Secondary Aims
-## SA-1 · Interaksi Kongesti Operasional × Risiko Klinis
-- Mengevaluasi apakah kondisi klinis tertentu (kardiak, infeksi, trauma, respirasi) menghasilkan pola LOS yang berbeda secara signifikan ketika berinteraksi dengan tingkat kepadatan IGD
+## SA-1 · Validasi Hipotesis Interaksi Klinis
+-Mengevaluasi apakah interaksi diagnosis dengan faktor operasional, demografis, historis, dan fisiologis menunjukkan pola risiko LOS yang berbeda secara signifikan dan mendukung hipotesis klinis yang mendasari desain Model B.
 
-## SA-2 · Audit Variabel Administratif
-- Melakukan studi ablasi sistematis terhadap variabel asuransi (kd_customer: BPJS vs Umum) melalui tiga skenario model, Full Model, No Insurance, dan Insurance Only untuk mengukur kontribusi prediktif sekaligus mendeteksi potensi bias administratif yang dapat mempengaruhi keadilan model (algorithmic fairness)
+## SA-2 Audit Variabel Administratif dan Keadilan Model
+Mengevaluasi kontribusi prediktif serta implikasi keadilan algoritmik dari variabel asuransi (kd_customer) melalui studi ablasi dan analisis performa per kelompok.
 
-## SA-3 · Robustness Temporal Model
-- Menilai apakah performa model tetap stabil ketika divalidasi menggunakan temporal split (train: data awal–tengah 2025, test: data akhir 2025), sebagai pendekatan yang lebih mencerminkan skenario deployment nyata di mana model dilatih dengan data historis dan digunakan untuk memprediksi pasien baru
+## SA-3 · Robustnes Temporal dan Deployment Realism
+Menguji apakah performa model tetap stabil ketika dilatih menggunakan data lama dan diuji pada data yang lebih baru, untuk mensimulasikan kondisi penggunaan model di dunia nyata.
 
 
 ## Dataset
